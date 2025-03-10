@@ -3,7 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Books</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>My books</h1>
+
+      <section class="reading-list">
+        <h2>Currently reading</h2>
+
+        <div class="book-item">
+          <div class="book-info">
+            <h3>White Nights</h3>
+            <p class="author">Fyodor Dostoyevsky</p>
+          </div>
+          <p class="pages">128 pages</p>
+        </div>
+
+        <div class="book-item">
+          <div class="book-info">
+            <h3>The Little Prince</h3>
+            <p class="author">Antoine de Saint-Exupéry</p>
+          </div>
+          <p class="pages">109 pages</p>
+        </div>
+      </section>
+
+      <section class="add-book">
+        <div class="input-group">
+          <input type="text" placeholder="Book name" />
+          <input type="text" placeholder="Author's name" />
+          <input type="number" placeholder="Number of pages" />
+        </div>
+        <button class="add-button">Add</button>
+      </section>
+
+      <button class="activities-button">See activities</button>
+    </div>
+  </body>
 </html>
