@@ -15,7 +15,24 @@
   <body>
     <div class="container">
       <header>
-        <button class="back-button">&lt;</button>
+        <a href="index.html" class="back-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="15"
+            viewBox="0 0 10 15"
+            fill="none"
+          >
+            <path
+              d="M8.99993 1C8.99993 1 1 5.60302 1 7.25C1 8.89708 9 13.5 9 13.5"
+              stroke="#BDBDBD"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
         <h1>My Activity</h1>
       </header>
 
@@ -28,14 +45,18 @@
         </div>
 
         <div class="book-list">
-          <div class="book-item">
-            <h3>White Nights</h3>
-            <p>Read 12 out of 128 pages</p>
-          </div>
-          <div class="book-item">
-            <h3>The Little Prince</h3>
-            <p>Read 2 out of 109 pages</p>
-          </div>
+          <a href="tracker.html" class="book-item-link">
+            <div class="book-item">
+              <h3>White Nights</h3>
+              <p>Read 12 out of 128 pages</p>
+            </div>
+          </a>
+          <a href="#" class="book-item-link">
+            <div class="book-item">
+              <h3>The Little Prince</h3>
+              <p>Read 2 out of 109 pages</p>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -43,11 +64,11 @@
         <h2>Statistics</h2>
         <div class="streak-item">
           <p>Current Streak</p>
-          <p>1 day</p>
+          <p class="current-streak">1 day</p>
         </div>
         <div class="streak-item">
           <p>Longest Streak</p>
-          <p>2 days</p>
+          <p class="longest-streak">2 days</p>
         </div>
       </section>
     </div>

@@ -5,6 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Reading Tracker</title>
     <link rel="stylesheet" href="tracker.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header class="activity-header">
+        <a href="index.html" class="back-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="15"
+            viewBox="0 0 10 15"
+            fill="none"
+          >
+            <path
+              d="M8.99993 1C8.99993 1 1 5.60302 1 7.25C1 8.89708 9 13.5 9 13.5"
+              stroke="#BDBDBD"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+        <h1>My Reading Tracker</h1>
+      </header>
+
+      <section class="book-details">
+        <div class="book-cover">
+          <img
+            src="https://media.s-bol.com/xWgw20vPpmnn/v2LPLGV/550x796.jpg"
+            alt="Book Cover"
+          />
+        </div>
+        <div class="book-info">
+          <h2>White Nights</h2>
+          <p class="author">Fyodor Dostoyevsky</p>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+
+          <div class="progress-text">
+            <span class="page-read">10/128</span>
+            <span class="page-percentage">7,81%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="calendar">
+        <div class="month-selector">
+          <select>
+            <option>Jan</option>
+            <option>Feb</option>
+            <option selected>Mar</option>
+            <option>Apr</option>
+            <option>Mei</option>
+            <option>Jun</option>
+            <option>Jul</option>
+            <option>Aug</option>
+            <option>Sep</option>
+            <option>Oct</option>
+            <option>Nov</option>
+            <option>Dec</option>
+          </select>
+          <select>
+            <option>2024</option>
+            <option selected>2025</option>
+            <option>2026</option>
+            <option>2027</option>
+            <option>2028</option>
+          </select>
+        </div>
+        <div class="days">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+          <div>13</div>
+          <div>14</div>
+          <div>15</div>
+          <div>16</div>
+          <div>17</div>
+          <div>18</div>
+          <div class="active">19</div>
+          <div class="active">20</div>
+          <div>21</div>
+          <div>22</div>
+          <div>23</div>
+          <div>24</div>
+          <div>25</div>
+          <div>26</div>
+          <div>27</div>
+          <div>28</div>
+          <div>29</div>
+          <div>30</div>
+          <div>31</div>
+        </div>
+      </section>
+
+      <section class="daily-logs">
+        <h2>My daily logs</h2>
+        <div class="log-item">
+          <div class="log-text">
+            <p>White Nights</p>
+            <p class="date">Today</p>
+          </div>
+        </div>
+        <div class="log-item">
+          <div class="log-text">
+            <p>White Nights</p>
+            <p class="date">19 february 2025</p>
+          </div>
+          <p class="page">Page 10</p>
+        </div>
+        <div class="log-item">
+          <div class="log-text">
+            <p>White Nights</p>
+            <p class="date">18 february 2025</p>
+          </div>
+          <p class="page">Page 2</p>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>

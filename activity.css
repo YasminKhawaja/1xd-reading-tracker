@@ -1,6 +1,6 @@
 body {
   font-family: "Outfit", sans-serif;
-  background-color: #f8f5f0; /* Lichte achtergrondkleur */
+  background-color: #f9f9f9; /* #f8f5f0; Lichte achtergrondkleur */
   margin: 0;
   padding: 20px;
   display: flex;
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  background-color: #fff;
+  /* background-color: #fff;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -18,22 +18,43 @@ body {
   text-align: center;
   box-sizing: border-box;
   border-radius: 15px;
-  margin: 0 auto;
+  margin: 0 auto; */
+  background-color: #fdfcfa;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Volledige breedte op mobiel */
+  max-width: 400px; /* Aangepaste maximale breedte */
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 10px; /* Toegevoegde border-radius */
+  margin: 0 auto; /* Centraal positioneren */
 }
 
 header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  gap: 60px;
+}
+
+header h1 {
+  color: #424242;
+  margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  word-wrap: break-word;
 }
 
 .back-button {
-  background: none;
-  border: none;
+  background: #f4f2e5;
+  padding: 6px 16px;
   font-size: 1.5em;
   color: #777;
   cursor: pointer;
   margin-right: 10px;
+  border-radius: 100px;
 }
 
 h1 {
@@ -45,11 +66,13 @@ h1 {
 
 .books-read h2,
 .statistics h2 {
-  color: #555;
-  font-size: 1.3em;
-  margin-bottom: 15px;
-  text-align: left;
+  color: #424242;
+  font-size: 20px;
+  margin-bottom: 20px;
   font-weight: 500;
+  word-wrap: break-word;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .month-buttons {
@@ -61,50 +84,100 @@ h1 {
 .month-buttons button {
   background-color: #eee;
   border: none;
-  border-radius: 20px;
-  padding: 8px 15px;
-  color: #555;
+  border-radius: 30px;
+  padding: 12px 16px;
+  color: #bdbdbd;
   cursor: pointer;
   font-family: "Outfit", sans-serif;
   font-size: 0.9em;
 }
 
 .month-buttons button.active {
-  background-color: #d0e0f0;
+  background-color: #f4f8f9;
+  border: 1px solid #d2e6ff;
 }
 
 .book-list .book-item {
   background-color: #f0f8ff;
-  padding: 15px;
+  padding: 18px 15px;
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   text-align: left;
 }
 
 .book-list .book-item h3 {
-  color: #333;
-  font-size: 1.1em;
-  margin: 0;
+  color: #424242;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 500;
+  line-height: normal;
+  margin: 0;
 }
 
 .book-list .book-item p {
-  color: #777;
-  font-size: 0.9em;
+  color: #bdbdbd;
+  font-family: Outfit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   margin: 0;
+}
+
+.book-item-link {
+  text-decoration: none;
+  color: inherit; /* Zorgt ervoor dat de kleur van de tekst niet verandert */
+  display: block; /* Maakt het hele blok klikbaar */
+}
+
+.book-item-link:hover,
+.book-item-link:focus,
+.book-item-link:active {
+  text-decoration: none; /* Verwijdert onderstreping bij hover, focus en actief */
+  outline: none; /* Verwijdert eventuele focus-randen */
+}
+
+.statistics {
+  margin-top: 30px; /* Ruimte boven de statistics-sectie */
+  padding-top: 20px; /* Ruimte binnen de statistics-sectie */
+  padding-bottom: 20px; /* Ruimte binnen de statistics-sectie */
+  border-top: 1px solid #ddd; /* Lijn boven de statistics-sectie */
+  border-bottom: 1px solid #ddd; /* Lijn onder de statistics-sectie */
+  margin-bottom: 100px;
 }
 
 .statistics .streak-item {
   display: flex;
   justify-content: space-between;
-  background-color: #f8f9da;
-  padding: 15px;
+  background-color: #f4f2e5;
+  padding: 20px 15px;
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .statistics .streak-item p {
-  color: #555;
-  font-size: 1em;
+  color: #424242;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.statistics .streak-item .current-streak {
+  color: #424242;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.statistics .streak-item .longest-streak {
+  color: #424242;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   margin: 0;
 }

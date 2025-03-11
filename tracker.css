@@ -1,0 +1,306 @@
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: #f9f9f9; /* #f8f5f0; Lichte achtergrondkleur */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  /* background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin: 0 auto; */
+
+  background-color: #fdfcfa;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Volledige breedte op mobiel */
+  max-width: 400px; /* Aangepaste maximale breedte */
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 10px; /* Toegevoegde border-radius */
+  margin: 0 auto; /* Centraal positioneren */
+}
+
+/* Header */
+/* .activity-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.back-button svg {
+  width: 20px;
+  height: 30px;
+  fill: none;
+  stroke: #bdbdbd;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+h1 {
+  margin: 0;
+  color: #333;
+  font-size: 1.75em;
+  font-weight: 600;
+} */
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+header h1 {
+  color: #424242;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.back-button {
+  background: #f4f2e5;
+  padding: 6px 16px;
+  font-size: 1.5em;
+  color: #777;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 100px;
+}
+
+h1 {
+  color: #333;
+  font-size: 1.75em;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Book Details */
+.book-details {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 20px;
+  /* background-color: #f0f8ff; */
+  margin-bottom: 20px;
+}
+
+.book-cover {
+  /* width: 80px; */
+  margin-right: 20px;
+}
+
+.book-cover img {
+  width: 110px;
+  /* width: 133px; */
+  /* height: 192px; */
+  border-radius: 24px;
+}
+
+.book-info h2 {
+  color: #424242;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 5px;
+  text-align: left;
+}
+
+.book-info .author {
+  color: #bdbdbd;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  text-align: left;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #ddd;
+  margin-top: 75px;
+  overflow: hidden;
+  /* width: 186px; */
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.progress-bar .progress {
+  width: 7.81%; /* Aangepast aan het percentage */
+  height: 100%;
+  background-color: #b0d4f1;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  /* color: #555; */
+  color: #bdbdbd;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+.progress-text .page-read {
+  color: #424242;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.progress-text .page-percentage {
+  color: #bdbdbd;
+  text-align: right;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Calendar */
+.calendar {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #d2e6ff;
+}
+
+.month-selector {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  /* padding: 8px 16px; */
+  align-items: center;
+  gap: 10px;
+}
+
+.month-selector select {
+  background-color: #f0f8ff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #bdbdbd;
+  cursor: pointer;
+  font-family: "Outfit";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  appearance: none; /* Verwijdert de standaard styling */
+  -webkit-appearance: none; /* Voor Safari */
+  -moz-appearance: none; /* Voor Firefox */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 8 6' fill='none'%3E%3Cpath d='M0.949707 1.5L4.01304 4.5L7.07637 1.5' stroke='%23BDBDBD' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); /* Voegt een aangepaste pijl toe */
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%; /* Positioneert de pijl */
+  padding-right: 30px; /* Geeft ruimte voor de pijl */
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+
+.days div {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 5px;
+  color: #424242;
+  font-size: 0.9em;
+}
+
+.days div.active {
+  background-color: #b0d4f1;
+  color: white;
+}
+
+/* Daily Logs */
+.daily-logs {
+  border-top: 1px solid #ddd; /* Lijn boven de statistics-sectie */
+  padding-top: 12px;
+}
+
+.daily-logs h2 {
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: 500;
+  color: #424242;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 10px;
+}
+
+.daily-logs .log-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f8ff;
+  padding: 20px 15px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.daily-logs .log-item .log-text {
+  text-align: left;
+}
+
+.daily-logs .log-item p {
+  color: #424242;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.daily-logs .log-item .log-text .date {
+  font-size: 14px;
+  font-style: normal;
+  margin: 0;
+  color: #bdbdbd;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.daily-logs .log-item .page {
+  color: #424242;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}

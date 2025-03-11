@@ -1,5 +1,5 @@
 body {
-  font-family: Outfit, sans-serif;
+  font-family: "Outfit", sans-serif;
   background-color: #f9f9f9;
   margin: 0;
   padding: 20px; /* Voeg wat padding toe aan de body */
@@ -52,7 +52,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   background-color: #f0f8ff; /*#f4f8f9; Lichtblauwe achtergrond */
-  padding: 10px 15px;
+  padding: 5px 15px;
   border-radius: 20px;
   margin-bottom: 10px;
   text-align: left;
@@ -139,13 +139,28 @@ h1 {
   line-height: normal;
 }
 
-.activities-button {
-  border-radius: 10px;
-  padding: 16px;
-  gap: 10px;
-}
-
 .add-button:hover,
 .activities-button:hover {
   background-color: #94c2e7;
+}
+
+.activities-button {
+  display: inline-block; /* Zorgt ervoor dat de link zich gedraagt als een knop */
+  background-color: #d2e6ff;
+  color: #424242;
+  padding: 16px 20px;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none; /* Verwijdert de standaard onderstreping van links */
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activities-button:hover,
+.activities-button:focus {
+  background-color: #94c2e7; /* Verander de achtergrondkleur bij hover of focus */
 }
