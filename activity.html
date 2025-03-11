@@ -5,6 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Activity</title>
     <link rel="stylesheet" href="activity.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header>
+        <button class="back-button">&lt;</button>
+        <h1>My Activity</h1>
+      </header>
+
+      <section class="books-read">
+        <h2>Books read this month</h2>
+        <div class="month-buttons">
+          <button>Jan 2025</button>
+          <button class="active">Feb 2025</button>
+          <button>Mar 2025</button>
+        </div>
+
+        <div class="book-list">
+          <div class="book-item">
+            <h3>White Nights</h3>
+            <p>Read 12 out of 128 pages</p>
+          </div>
+          <div class="book-item">
+            <h3>The Little Prince</h3>
+            <p>Read 2 out of 109 pages</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="statistics">
+        <h2>Statistics</h2>
+        <div class="streak-item">
+          <p>Current Streak</p>
+          <p>1 day</p>
+        </div>
+        <div class="streak-item">
+          <p>Longest Streak</p>
+          <p>2 days</p>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>

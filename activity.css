@@ -1,0 +1,110 @@
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: #f8f5f0; /* Lichte achtergrondkleur */
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #777;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+h1 {
+  color: #333;
+  font-size: 1.75em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.books-read h2,
+.statistics h2 {
+  color: #555;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.month-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.month-buttons button {
+  background-color: #eee;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  color: #555;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9em;
+}
+
+.month-buttons button.active {
+  background-color: #d0e0f0;
+}
+
+.book-list .book-item {
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.book-list .book-item h3 {
+  color: #333;
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+}
+
+.book-list .book-item p {
+  color: #777;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.statistics .streak-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f9da;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.statistics .streak-item p {
+  color: #555;
+  font-size: 1em;
+  margin: 0;
+}
