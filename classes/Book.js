@@ -7,13 +7,19 @@
 // }
 
 export default class Book {
-  constructor(name, author, pages) {
+  constructor(name, author, pages, cover = "") {
     this.id = Date.now().toString(); // Unieke ID
     this.name = name;
     this.author = author;
     this.totalPages = parseInt(pages);
     this.pagesRead = 0;
     this.isReading = true;
-    // Later: this.cover = ""; // bv. URL naar afbeelding
+    this.cover = cover;
+    this.logs = [];
+  }
+
+  addLog(entry) {
+    this.logs.unshift(entry);
+    this.pagesRead = Math.max(this.pagesRead, entry.page);
   }
 }
