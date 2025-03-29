@@ -100,8 +100,8 @@
           <div>16</div>
           <div>17</div>
           <div>18</div>
-          <div class="active">19</div>
-          <div class="active">20</div>
+          <div>19</div>
+          <div>20</div>
           <div>21</div>
           <div>22</div>
           <div>23</div>
@@ -140,5 +140,17 @@
         </div>
       </section>
     </div>
+
+    <!-- Modal -->
+    <div class="modal hidden" id="logModal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Tot welke pagina heb je gelezen?</h3>
+        <input type="number" id="pageInput" placeholder="Aantal pagina's" />
+        <button id="confirmLog">Bevestigen</button>
+      </div>
+    </div>
+
+    <script type="module" src="tracker.js"></script>
   </body>
 </html>
