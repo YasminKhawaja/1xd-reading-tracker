@@ -122,15 +122,22 @@ const name = document.querySelector("#name");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const btn = document.querySelector(".add-button");
+const cover = document.querySelector("#cover");
 
 // Voeg boek toe
 btn.addEventListener("click", () => {
-  if (name.value && author.value && pages.value) {
-    const newBook = new Book(name.value, author.value, pages.value);
+  if (name.value && author.value && pages.value && cover.value) {
+    const newBook = new Book(
+      name.value,
+      author.value,
+      pages.value,
+      cover.value
+    );
     library.addBook(newBook); // Deze voert automatisch renderBooks uit
     name.value = "";
     author.value = "";
     pages.value = "";
+    cover.value = "";
   }
   console.log("clicked");
 });
