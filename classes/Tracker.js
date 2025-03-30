@@ -20,17 +20,19 @@ export default class Tracker {
   }
 
   init() {
+    this.setDefaultMonthAndYear();
+    this.setMonthYearChangeListener();
     this.updateUI();
     this.setUpDayClicks();
     this.setUpModalEvents();
   }
 
-  // 🧠 Hulp: maandnaam → cijfer
+  // Hulp: maandnaam → cijfer
   monthIndex(monthShort) {
     return this.months.indexOf(monthShort) + 1;
   }
 
-  // 📅 Setup click op kalenderdagen
+  // setup click op kalenderdagen
   setUpDayClicks() {
     document.querySelectorAll(".days div").forEach((day) => {
       day.addEventListener("click", () => {
@@ -51,7 +53,7 @@ export default class Tracker {
     });
   }
 
-  // 🔘 Setup pop-up bevestigen/sluiten
+  // setup pop-up bevestigen/sluiten
   //   setUpModalEvents() {
   //     document.getElementById("confirmLog").addEventListener("click", () => {
   //       const page = document.getElementById("pageInput").value;
@@ -71,12 +73,12 @@ export default class Tracker {
   //   }
 
   setUpModalEvents() {
-    // 👉 Knop vervangen zodat oude eventlisteners verdwijnen
+    // knop vervangen zodat oude eventlisteners verdwijnen
     const oldBtn = document.getElementById("confirmLog");
     const newBtn = oldBtn.cloneNode(true);
     oldBtn.parentNode.replaceChild(newBtn, oldBtn);
 
-    // ✅ Nieuwe click listener toevoegen (enkel 1 keer)
+    // nieuwe click listener toevoegen (enkel 1 keer)
     newBtn.addEventListener("click", () => {
       const page = document.getElementById("pageInput").value;
       if (page && this.selectedDate) {
@@ -89,25 +91,21 @@ export default class Tracker {
       }
     });
 
-    // ❌ Sluitknop (werkt wel nog gewoon)
+    // Sluitknop (werkt wel nog gewoon)
     document.querySelector(".close-button").addEventListener("click", () => {
       document.getElementById("logModal").classList.add("hidden");
     });
   }
 
-  // 🖥️ Alles updaten op scherm
   updateUI() {
     // Titel + auteur
     document.querySelector(".book-info h2").textContent = this.book.name;
     document.querySelector(".book-info .author").textContent = this.book.author;
 
-    // Cover (als die leeg is, toon een standaardfoto)
+    // Cover
     const coverImg = document.querySelector(".book-cover img");
-    if (this.book.cover) {
-      coverImg.src = this.book.cover;
-    } else {
-      coverImg.src = "https://via.placeholder.com/150x220?text=No+Cover";
-    }
+    coverImg.src =
+      this.book.cover || "https://via.placeholder.com/150x220?text=No+Cover";
 
     // Voortgang + percentage
     document.querySelector(
@@ -119,24 +117,33 @@ export default class Tracker {
     document.querySelector(".page-percentage").textContent = `${percentage}%`;
     document.querySelector(".progress").style.width = `${percentage}%`;
 
-    // 📅 Dagen kleuren als gelezen
+    // 🗓️ Dynamisch aantal dagen tonen
     const month = document.querySelectorAll(".month-selector select")[0].value;
     const year = document.querySelectorAll(".month-selector select")[1].value;
+    const daysContainer = document.querySelector(".days");
+    daysContainer.innerHTML = ""; // eerst leegmaken
 
-    document.querySelectorAll(".days div").forEach((day) => {
-      const dayNumber = day.textContent.padStart(2, "0");
+    const daysInMonth = new Date(year, this.monthIndex(month), 0).getDate();
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayDiv = document.createElement("div");
+      dayDiv.textContent = day;
+
+      // Check of er gelogd werd op deze dag
       const dateStr = `${year}-${String(this.monthIndex(month)).padStart(
         2,
         "0"
-      )}-${dayNumber}`;
-
+      )}-${String(day).padStart(2, "0")}`;
       const isLogged = this.book.logs.some((log) => log.date === dateStr);
       if (isLogged) {
-        day.classList.add("active");
-      } else {
-        day.classList.remove("active");
+        dayDiv.classList.add("active");
       }
-    });
+
+      daysContainer.appendChild(dayDiv);
+    }
+
+    // 🎯 Belangrijk: opnieuw klikbare dagen activeren
+    this.setUpDayClicks();
 
     // 📋 Logs tonen
     const logContainer = document.querySelector(".daily-logs");
@@ -161,7 +168,136 @@ export default class Tracker {
       .join("");
 
     logContainer.innerHTML = "<h2>My daily logs</h2>" + list;
+  }
 
-    this.setUpDayClicks();
+  //   // alles updaten op scherm
+  //   updateUI() {
+  //     // Titel + auteur
+  //     document.querySelector(".book-info h2").textContent = this.book.name;
+  //     document.querySelector(".book-info .author").textContent = this.book.author;
+
+  //     // Cover (als die leeg is, toon ik een standaardfoto)
+  //     const coverImg = document.querySelector(".book-cover img");
+  //     if (this.book.cover) {
+  //       coverImg.src = this.book.cover;
+  //     } else {
+  //       coverImg.src = "https://via.placeholder.com/150x220?text=No+Cover";
+  //     }
+
+  // Voortgang + percentage
+  // document.querySelector(
+  //   ".page-read"
+  // ).textContent = `${this.book.pagesRead}/${this.book.totalPages}`;
+  // const percentage = Math.round(
+  //   (this.book.pagesRead / this.book.totalPages) * 100
+  // );
+  // document.querySelector(".page-percentage").textContent = `${percentage}%`;
+  // document.querySelector(".progress").style.width = `${percentage}%`;
+
+  // // dagen kleuren wanneer gelezen (Dit stuk werkt enkel met de statische HTML en veroorzaakt de “31 dagen elke maand”-bug)
+  // const month = document.querySelectorAll(".month-selector select")[0].value;
+  // const year = document.querySelectorAll(".month-selector select")[1].value;
+
+  // document.querySelectorAll(".days div").forEach((day) => {
+  //   const dayNumber = day.textContent.padStart(2, "0");
+  //   const dateStr = `${year}-${String(this.monthIndex(month)).padStart(
+  //     2,
+  //     "0"
+  //   )}-${dayNumber}`;
+
+  //   const isLogged = this.book.logs.some((log) => log.date === dateStr);
+  //   if (isLogged) {
+  //     day.classList.add("active");
+  //   } else {
+  //     day.classList.remove("active");
+  //   }
+  // });
+
+  //     // 🧮 Dynamisch aantal dagen tonen op basis van maand/jaar
+  //     const daysContainer = document.querySelector(".days");
+  //     daysContainer.innerHTML = ""; // leegmaken
+
+  //     const daysInMonth = new Date(year, this.monthIndex(month), 0).getDate();
+
+  //     for (let day = 1; day <= daysInMonth; day++) {
+  //       const dayDiv = document.createElement("div");
+  //       dayDiv.textContent = day;
+
+  //       // 🔵 active als gelezen op die dag
+  //       const dateStr = `${year}-${String(this.monthIndex(month)).padStart(
+  //         2,
+  //         "0"
+  //       )}-${String(day).padStart(2, "0")}`;
+  //       const isLogged = this.book.logs.some((log) => log.date === dateStr);
+  //       if (isLogged) {
+  //         dayDiv.classList.add("active");
+  //       }
+
+  //       daysContainer.appendChild(dayDiv);
+  //     }
+
+  //     // 🧠 Opnieuw klikbare dagen instellen
+  //     this.setUpDayClicks();
+
+  //     // 📋 Logs tonen
+  //     const logContainer = document.querySelector(".daily-logs");
+  //     const list = this.book.logs
+  //       .map((log) => {
+  //         const date = new Date(log.date);
+  //         const dateString = date.toLocaleDateString("en-GB", {
+  //           day: "numeric",
+  //           month: "long",
+  //           year: "numeric",
+  //         });
+
+  //         return `
+  //           <div class="log-item">
+  //             <div class="log-text">
+  //               <p>${this.book.name}</p>
+  //               <p class="date">${dateString}</p>
+  //             </div>
+  //             <p class="page">Page ${log.page}</p>
+  //           </div>`;
+  //       })
+  //       .join("");
+
+  //     logContainer.innerHTML = "<h2>My daily logs</h2>" + list;
+
+  //     this.setUpDayClicks();
+  //   }
+
+  // automatisch huidige maand en jaar instellen
+  setDefaultMonthAndYear() {
+    const now = new Date();
+    const currentMonth = now.getMonth(); // 0-based (0 = jan)
+    const currentYear = now.getFullYear();
+
+    const monthDropdown = document.querySelectorAll(
+      ".month-selector select"
+    )[0];
+    const yearDropdown = document.querySelectorAll(".month-selector select")[1];
+
+    // Selecteren van de juiste maand
+    monthDropdown.selectedIndex = currentMonth;
+
+    // Zoeken naar het juiste jaar in de dropdown
+    const yearOptions = Array.from(yearDropdown.options);
+    const match = yearOptions.find(
+      (opt) => parseInt(opt.value) === currentYear
+    );
+    if (match) {
+      yearDropdown.value = currentYear;
+    }
+  }
+
+  // 📆 Wanneer ik de maand of het jaar handmatig verander
+  setMonthYearChangeListener() {
+    const monthDropdown = document.querySelectorAll(
+      ".month-selector select"
+    )[0];
+    const yearDropdown = document.querySelectorAll(".month-selector select")[1];
+
+    monthDropdown.addEventListener("change", () => this.updateUI());
+    yearDropdown.addEventListener("change", () => this.updateUI());
   }
 }
