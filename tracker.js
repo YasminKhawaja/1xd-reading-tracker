@@ -91,7 +91,7 @@ const library = new Library();
 const bookData = library.getBooks().find((b) => b.id === bookId);
 
 const tracker = new Tracker(bookData, library);
-tracker.init(); // ⚠️ Belangrijk! Niet 'updateUI()' maar 'init()'
+tracker.init(); // Belangrijk! Niet 'updateUI()' maar 'init()'
 
 if (!bookData) {
   alert("Boek niet gevonden");

@@ -117,7 +117,7 @@ export default class Tracker {
     document.querySelector(".page-percentage").textContent = `${percentage}%`;
     document.querySelector(".progress").style.width = `${percentage}%`;
 
-    // 🗓️ Dynamisch aantal dagen tonen
+    // Dynamisch aantal dagen tonen
     const month = document.querySelectorAll(".month-selector select")[0].value;
     const year = document.querySelectorAll(".month-selector select")[1].value;
     const daysContainer = document.querySelector(".days");
@@ -129,7 +129,7 @@ export default class Tracker {
       const dayDiv = document.createElement("div");
       dayDiv.textContent = day;
 
-      // Check of er gelogd werd op deze dag
+      // Checken of er gelogd werd op deze dag
       const dateStr = `${year}-${String(this.monthIndex(month)).padStart(
         2,
         "0"
@@ -142,12 +142,40 @@ export default class Tracker {
       daysContainer.appendChild(dayDiv);
     }
 
-    // 🎯 Belangrijk: opnieuw klikbare dagen activeren
+    // Belangrijk: opnieuw klikbare dagen activeren
     this.setUpDayClicks();
 
-    // 📋 Logs tonen
+    // // Logs tonen
+    // const logContainer = document.querySelector(".daily-logs");
+    // const list = this.book.logs
+    //   .map((log) => {
+    //     const date = new Date(log.date);
+    //     const dateString = date.toLocaleDateString("en-GB", {
+    //       day: "numeric",
+    //       month: "long",
+    //       year: "numeric",
+    //     });
+
+    //     return `
+    //       <div class="log-item">
+    //         <div class="log-text">
+    //           <p>${this.book.name}</p>
+    //           <p class="date">${dateString}</p>
+    //         </div>
+    //         <p class="page">Page ${log.page}</p>
+    //       </div>`;
+    //   })
+    //   .join("");
+
+    // Logs tonen
     const logContainer = document.querySelector(".daily-logs");
-    const list = this.book.logs
+
+    // logs van nieuwste naar oudste sorteren
+    const sortedLogs = [...this.book.logs].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+    const list = sortedLogs
       .map((log) => {
         const date = new Date(log.date);
         const dateString = date.toLocaleDateString("en-GB", {
@@ -157,13 +185,13 @@ export default class Tracker {
         });
 
         return `
-          <div class="log-item">
-            <div class="log-text">
-              <p>${this.book.name}</p>
-              <p class="date">${dateString}</p>
-            </div>
-            <p class="page">Page ${log.page}</p>
-          </div>`;
+      <div class="log-item">
+        <div class="log-text">
+          <p>${this.book.name}</p>
+          <p class="date">${dateString}</p>
+        </div>
+        <p class="page">Page ${log.page}</p>
+      </div>`;
       })
       .join("");
 
@@ -213,7 +241,7 @@ export default class Tracker {
   //   }
   // });
 
-  //     // 🧮 Dynamisch aantal dagen tonen op basis van maand/jaar
+  //     // Dynamisch aantal dagen tonen op basis van maand/jaar
   //     const daysContainer = document.querySelector(".days");
   //     daysContainer.innerHTML = ""; // leegmaken
 
@@ -223,7 +251,7 @@ export default class Tracker {
   //       const dayDiv = document.createElement("div");
   //       dayDiv.textContent = day;
 
-  //       // 🔵 active als gelezen op die dag
+  //       // active als gelezen op die dag
   //       const dateStr = `${year}-${String(this.monthIndex(month)).padStart(
   //         2,
   //         "0"
@@ -236,10 +264,10 @@ export default class Tracker {
   //       daysContainer.appendChild(dayDiv);
   //     }
 
-  //     // 🧠 Opnieuw klikbare dagen instellen
+  //     // Opnieuw klikbare dagen instellen
   //     this.setUpDayClicks();
 
-  //     // 📋 Logs tonen
+  //     //  Logs tonen
   //     const logContainer = document.querySelector(".daily-logs");
   //     const list = this.book.logs
   //       .map((log) => {
@@ -290,7 +318,7 @@ export default class Tracker {
     }
   }
 
-  // 📆 Wanneer ik de maand of het jaar handmatig verander
+  // Wanneer ik de maand of het jaar handmatig verander
   setMonthYearChangeListener() {
     const monthDropdown = document.querySelectorAll(
       ".month-selector select"
