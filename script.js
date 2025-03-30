@@ -142,7 +142,7 @@ btn.addEventListener("click", () => {
   console.log("clicked");
 });
 
-// Initieel renderen bij pagina laden
+// renderen bij pagina laden
 library.renderBooks();
 
 console.log(library);
