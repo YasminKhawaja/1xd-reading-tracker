@@ -1,6 +1,6 @@
 body {
   font-family: "Outfit", sans-serif;
-  background-color: #f9f9f9; /* #f8f5f0; Lichte achtergrondkleur */
+  background-color: #f9f9f9;
   margin: 0;
   padding: 20px;
   display: flex;
@@ -10,26 +10,17 @@ body {
 }
 
 .container {
-  /* background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  box-sizing: border-box;
-  border-radius: 15px;
-  margin: 0 auto; */
   background-color: #fdfcfa;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   padding: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Volledige breedte op mobiel */
-  max-width: 400px; /* Aangepaste maximale breedte */
+  width: 100%;
+  max-width: 400px;
   text-align: center;
   box-sizing: border-box;
-  border-radius: 10px; /* Toegevoegde border-radius */
-  margin: 0 auto; /* Centraal positioneren */
+  border-radius: 10px;
+  margin: 0 auto;
 }
 
 header {
@@ -75,13 +66,26 @@ h1 {
   padding-left: 10px;
 }
 
+/* ✅ Scrollbare maandknoppen */
 .month-buttons {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 10px 10px 10px 0;
+  margin: 0 -10px 20px -10px; /* negatieve margin voorkomt dat de laatste knop afgesneden wordt */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.month-buttons::-webkit-scrollbar {
+  display: none;
 }
 
 .month-buttons button {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
   background-color: #eee;
   border: none;
   border-radius: 30px;
@@ -90,6 +94,7 @@ h1 {
   cursor: pointer;
   font-family: "Outfit", sans-serif;
   font-size: 0.9em;
+  min-width: 110px;
 }
 
 .month-buttons button.active {
@@ -97,6 +102,12 @@ h1 {
   border: 1px solid #d2e6ff;
 }
 
+.month-buttons button.active {
+  background-color: #f4f8f9;
+  border: 1px solid #d2e6ff;
+}
+
+/* ✅ Boeklijst */
 .book-list .book-item {
   background-color: #f0f8ff;
   padding: 18px 15px;
@@ -108,41 +119,38 @@ h1 {
 .book-list .book-item h3 {
   color: #424242;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  margin: 0;
+  margin: 0 0 4px;
+  word-break: break-word;
 }
 
 .book-list .book-item p {
   color: #bdbdbd;
-  font-family: Outfit;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   margin: 0;
 }
 
 .book-item-link {
   text-decoration: none;
-  color: inherit; /* Zorgt ervoor dat de kleur van de tekst niet verandert */
-  display: block; /* Maakt het hele blok klikbaar */
+  color: inherit;
+  display: block;
 }
 
 .book-item-link:hover,
 .book-item-link:focus,
 .book-item-link:active {
-  text-decoration: none; /* Verwijdert onderstreping bij hover, focus en actief */
-  outline: none; /* Verwijdert eventuele focus-randen */
+  text-decoration: none;
+  outline: none;
 }
 
+/* ✅ Statistieken */
 .statistics {
-  margin-top: 30px; /* Ruimte boven de statistics-sectie */
-  padding-top: 20px; /* Ruimte binnen de statistics-sectie */
-  padding-bottom: 20px; /* Ruimte binnen de statistics-sectie */
-  border-top: 1px solid #ddd; /* Lijn boven de statistics-sectie */
-  border-bottom: 1px solid #ddd; /* Lijn onder de statistics-sectie */
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 100px;
 }
 
@@ -158,26 +166,11 @@ h1 {
 .statistics .streak-item p {
   color: #424242;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   margin: 0;
 }
 
-.statistics .streak-item .current-streak {
-  color: #424242;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
-}
-
+.statistics .streak-item .current-streak,
 .statistics .streak-item .longest-streak {
-  color: #424242;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
 }

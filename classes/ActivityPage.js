@@ -72,6 +72,8 @@ export default class ActivityPage {
         btn.classList.add("active");
         const [month, year] = currentLabel.split(" ");
         this.showBooksForMonth(month, year);
+
+        btn.scrollIntoView({ behavior: "smooth", inline: "start" });
       }
     });
   }
