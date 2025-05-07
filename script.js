@@ -111,38 +111,109 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// import Book from "./classes/Book.js";
+// import Library from "./classes/Library.js";
+
+// // Geef de selector door van de container die we willen vullen
+// const library = new Library(".reading-list");
+
+// // DOM elementen
+// const name = document.querySelector("#name");
+// const author = document.querySelector("#author");
+// const pages = document.querySelector("#pages");
+// const btn = document.querySelector(".add-button");
+// const cover = document.querySelector("#cover");
+
+// Voeg boek toe
+// btn.addEventListener("click", () => {
+//   if (name.value && author.value && pages.value && cover.value) {
+//     const newBook = new Book(
+//       name.value,
+//       author.value,
+//       pages.value,
+//       cover.value
+//     );
+//     library.addBook(newBook); // Deze voert automatisch renderBooks uit
+//     name.value = "";
+//     author.value = "";
+//     pages.value = "";
+//     cover.value = "";
+//   }
+//   console.log("clicked");
+// });
+
+// btn.addEventListener("click", async (e) => {
+//   if (name.value && author.value && pages.value) {
+//     const cover = await fetchCover(name.value);
+//     const book = new Books(name.value, author.value, pages.value, cover);
+
+//     allBooks.unshift(book); // nieuw boek bovenaan
+//     localStorage.setItem("books", JSON.stringify(allBooks));
+
+//     renderBooks();
+//     name.value = "";
+//     author.value = "";
+//     pages.value = "";
+//   }
+// });
+
+// async function fetchCover(title) {
+//   const query = encodeURIComponent(title);
+//   const response = await fetch(
+//     `https://openlibrary.org/search.json?title=${query}`
+//   );
+//   const data = await response.json();
+
+//   if (data.docs && data.docs.length > 0 && data.docs[0].cover_i) {
+//     return `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-L.jpg`;
+//   }
+
+//   return ""; // geen cover gevonden
+// }
+
+// // renderen bij pagina laden
+// library.renderBooks();
+
+// console.log(library);
+
 import Book from "./classes/Book.js";
 import Library from "./classes/Library.js";
 
-// Geef de selector door van de container die we willen vullen
 const library = new Library(".reading-list");
 
-// DOM elementen
 const name = document.querySelector("#name");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const btn = document.querySelector(".add-button");
-const cover = document.querySelector("#cover");
 
-// Voeg boek toe
-btn.addEventListener("click", () => {
-  if (name.value && author.value && pages.value && cover.value) {
-    const newBook = new Book(
-      name.value,
-      author.value,
-      pages.value,
-      cover.value
-    );
-    library.addBook(newBook); // Deze voert automatisch renderBooks uit
+btn.addEventListener("click", async (e) => {
+  if (name.value && author.value && pages.value) {
+    const cover = await fetchCover(name.value);
+    const book = new Book(name.value, author.value, pages.value, cover);
+
+    library.books.unshift(book); // Nieuw boek bovenaan
+    library.saveBooks();
+    library.renderBooks();
+
     name.value = "";
     author.value = "";
     pages.value = "";
-    cover.value = "";
   }
-  console.log("clicked");
 });
 
-// renderen bij pagina laden
-library.renderBooks();
+async function fetchCover(title) {
+  const query = encodeURIComponent(title);
+  const response = await fetch(
+    `https://openlibrary.org/search.json?title=${query}`
+  );
+  const data = await response.json();
 
-console.log(library);
+  if (data.docs && data.docs.length > 0 && data.docs[0].cover_i) {
+    return `https://covers.openlibrary.org/b/id/${data.docs[0].cover_i}-L.jpg`;
+  }
+
+  return "";
+}
+
+// covers laten zien bij het opstarten
+library.renderBooks();

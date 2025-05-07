@@ -82,6 +82,23 @@ export default class Library {
       const item = document.createElement("div");
       item.className = "book-item";
 
+      // if (book.cover) {
+      //   const img = document.createElement("img");
+      //   img.src = book.cover;
+      //   img.alt = "Cover";
+      //   img.style.width = "40px";
+      //   img.style.height = "60px";
+      //   img.style.objectFit = "cover";
+      //   img.style.borderRadius = "8px";
+      //   img.style.marginRight = "12px";
+      //   item.prepend(img);
+      // }
+
+      const showCovers = false;
+      if (showCovers && book.cover) {
+        // voeg image toe
+      }
+
       const info = document.createElement("div");
       info.className = "book-info";
 

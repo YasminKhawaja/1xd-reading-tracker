@@ -96,6 +96,7 @@ h1 {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  white-space: nowrap; /* voorkomt dat 'pages' afbreekt */
 }
 
 .add-book {
