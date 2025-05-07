@@ -364,3 +364,15 @@ h1 {
   font-size: 24px;
   cursor: pointer;
 }
+
+.delete-button {
+  margin-top: 30px;
+  padding: 12px 20px;
+  background-color: #fbeaea;
+  color: #c62828;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}

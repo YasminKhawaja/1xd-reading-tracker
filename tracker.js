@@ -100,3 +100,14 @@ if (!bookData) {
   const tracker = new Tracker(bookData, library);
   tracker.init(); // de tracker class regelt alles
 }
+
+document.getElementById("deleteBookBtn").addEventListener("click", () => {
+  const confirmDelete = confirm(
+    "Ben je zeker dat je dit boek wilt verwijderen?"
+  );
+  if (confirmDelete) {
+    const updatedBooks = library.getBooks().filter((b) => b.id !== bookData.id);
+    localStorage.setItem("books", JSON.stringify(updatedBooks));
+    window.location.href = "index.html"; // terug naar hoofdpagina
+  }
+});
